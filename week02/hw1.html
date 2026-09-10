@@ -1,0 +1,15 @@
+<form>
+    <div id="number"></div>
+    <input type="button" value="count" onclick="tClick()">
+</form>
+
+<script>
+
+function tClick() {
+    alert("You clicked the button.");
+    // document.write("You clicked the button."); // <-- HTML문서 사라짐
+    document.getElementById("number").innerHTML = "버튼을 클릭했습니다";
+}
+
+</script>
+
