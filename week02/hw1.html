@@ -1,15 +1,21 @@
 <form>
-    <div id="number"></div>
+    <div id="number">0</div>
     <input type="button" value="count" onclick="tClick()">
+    <input type="button" value="reset" onclick="tReset()">
 </form>
 
 <script>
 
+let count = 0;
+
 function tClick() {
-    alert("You clicked the button.");
-    // document.write("You clicked the button."); // <-- HTML문서 사라짐
-    document.getElementById("number").innerHTML = "버튼을 클릭했습니다";
+    count++;
+    document.getElementById("number").textContent = count;
+}
+
+function tReset() {
+    count = 0;
+    document.getElementById("number").textContent = count;
 }
 
 </script>
-

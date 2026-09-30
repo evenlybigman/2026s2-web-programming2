@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 1</title>
+</head>
+
+<body>
+    <p id="clockLine">현재시간: <span id="time">00:00:00</span></p>
+    <h1><span id="status"></span></h1>
+
+    <script>
+        function getTimes() {
+            var dt = new Date();
+            var h = dt.getHours();
+            var hours = String(h).padStart(2, "0");
+            var minutes = String(dt.getMinutes()).padStart(2, "0");
+            var seconds = String(dt.getSeconds()).padStart(2, "0");
+            var time = document.getElementById("time");
+            time.innerHTML = hours + ":" + minutes + ":" + seconds;
+
+            var clockLine = document.getElementById("clockLine");
+            var statusE1 = document.getElementById("status");
+
+            if (h >= 9 && h < 21) {
+                statusE1.innerHTML = "영 업 중";
+                clockLine.style.color = "black";
+                statusE1.style.color = "black";
+                document.body.style.backgroundColor = "white";
+            } else {
+                statusE1.innerHTML = "영 업 종 료";
+                clockLine.style.color = "white";
+                statusE1.style.color = "white";
+                document.body.style.backgroundColor = "black";
+            }
+        }
+        getTimes();
+        setInterval(getTimes, 1000);
+    </script>
+</body>
+
+</html>

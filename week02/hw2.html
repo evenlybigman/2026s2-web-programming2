@@ -1,0 +1,33 @@
+<form>
+    <div id="number">0</div>
+    <input type="button" value="count" onclick="tClick()">
+    <input type="button" value="reset" onclick="tReset()">
+</form>
+
+<script>
+
+let count = 0;
+
+function tClick() {
+    count++;
+    document.getElementById("number").textContent = count;
+    checkColor();
+}
+
+function tReset() {
+    count = 0;
+    document.getElementById("number").textContent = count;
+    checkColor();
+}
+
+function checkColor() {
+    if (count === 0) {
+        document.bgColor = "white";
+    } else if (count % 2 === 0) {
+        document.bgColor = "lightgreen";
+    } else {
+        document.bgColor = "yellow";
+    }
+}
+
+</script>
