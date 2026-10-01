@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 2-4</title>
+</head>
+
+<body>
+    <h1>식물 키우기</h1>
+
+    <button onclick = "green.giveLight(15)">빛 공급</button> :
+    <span id = "light">0</span>
+    &nbsp;
+    <button onclick = "green.giveWater(10)">수분 공급</button> :
+    <span id = "water">0</span>
+    &nbsp;
+    <button onclick = "green.giveTemp(5)">온도</button> :
+    <span id = "temp">0</span>
+    &nbsp;
+    <button onclick = "green.giveNutrient(1)">영양분</button> :
+    <span id = "nutrient">0</span>
+    <br>
+    <br>
+    <h3>성장 크기 : <span id = "treeSize">0</span></h3>
+    <img src = "pot.png" height="30" id="myTree">
+
+    <script>
+        function tree() {
+            this.light = 0;
+            this.water = 0;
+            this.temp = 0;                                            // 온도 추가
+            this.nutrient = 0;                                        // 영양분 추가
+            this.size = 0;
+
+            this.giveLight = function (light) {
+                this.light += light;
+                document.getElementById("light").innerHTML = this.light;
+                this.growth();
+            };
+
+            this.giveWater = function (water) {
+                this.water += water;
+                document.getElementById("water").innerHTML = this.water;
+                this.growth();
+            };
+
+            this.giveTemp = function (temp) {                         // [온도] 버튼: 클릭마다 5도 상승
+                this.temp += temp;
+                document.getElementById("temp").innerHTML = this.temp;
+                this.growth();
+            };
+
+            this.giveNutrient = function (nutrient) {                 // [영양분] 버튼
+                this.nutrient += nutrient;
+                document.getElementById("nutrient").innerHTML = this.nutrient;
+                this.growth();
+            };
+
+            this.growth = function () {
+                // 빛, 물이 있고 온도가 15~40도일 때만 성장
+                if (this.light > 0 && this.water > 0 && this.temp >= 15 && this.temp <= 40) {
+                    if (this.nutrient > 0) {
+                        this.size += 2;                               // 영양분 있으면 2배 성장
+                    } else {
+                        this.size++;
+                    }
+                } else {
+                    this.size--;                                      // 그렇지 않으면 감소
+                }
+                document.getElementById("treeSize").innerHTML = this.size;
+            };
+        }
+
+        let green = new tree();
+    </script>
+
+</body>
+
+</html>
